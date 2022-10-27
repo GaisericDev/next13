@@ -1,5 +1,6 @@
 import React from "react";
 import { use } from "react";
+import Link from "next/link";
 
 const getPosts = async () => {
   let posts = await fetch("https://dummyjson.com/posts?limit=3");
@@ -14,7 +15,9 @@ export default function post() {
     <div>
       <ul>
         {posts.map((p) => (
-          <li key={p.id}>{p.title}</li>
+          <li key={p.id}>
+            <Link href={`/posts/${p.id}`}>{p.title}</Link>
+          </li>
         ))}
       </ul>
     </div>
